@@ -4,7 +4,7 @@ import java.util.Scanner;
 
  
 
-class Dec2Hex 
+class Dex2Hex 
 
 { 
 
