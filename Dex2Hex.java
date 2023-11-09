@@ -1,22 +1,29 @@
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Dex2Hex {
+    private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
+
+    private Dex2Hex() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Please provide a single integer argument.");
+            logger.severe("Please provide a single integer argument.");
             return;
         }
 
         try {
             int decimal = Integer.parseInt(args[0]);
             if (decimal < 0) {
-                System.out.println("Please provide a non-negative integer argument.");
+                logger.severe("Please provide a non-negative integer argument.");
             } else {
                 String hexadecimal = convertToHex(decimal);
-                System.out.println("Hexadecimal representation is: " + hexadecimal);
+                logger.info("Hexadecimal representation is: " + hexadecimal);
             }
         } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please provide a valid integer.");
+            logger.severe("Invalid input. Please provide a valid integer.");
         }
     }
 
@@ -33,5 +40,3 @@ public class Dex2Hex {
         return hexadecimal.toString();
     }
 }
-
-// this is new changes
