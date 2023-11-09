@@ -1,5 +1,5 @@
  
-
+package mypack;
 import java.util.Scanner; 
 
  
