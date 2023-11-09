@@ -5,7 +5,7 @@ public class Dex2Hex {
     private static final Logger logger = Logger.getLogger(Dex2Hex.class.getName());
 
     private Dex2Hex() {
-        throw new IllegalStateException("Utility class");
+        // Private constructor to hide the implicit public one
     }
 
     public static void main(String[] args) {
