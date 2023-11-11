@@ -1,25 +1,35 @@
+import java.util.Scanner;
+
 public class Dex2Hex {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Please provide a single integer argument.");
+            return;
+        }
 
-    public static int Arg1;
-
-    public static void main(String args[]) {
-        Arg1 = Integer.parseInt(args[0]);
-        String hexadecimal = convertToHex(Arg1);
-        System.out.println("Hexadecimal representation is: " + hexadecimal);
+        try {
+            int decimal = Integer.parseInt(args[0]);
+            if (decimal < 0) {
+                System.out.println("Please provide a non-negative integer argument.");
+            } else {
+                String hexadecimal = convertToHex(decimal);
+                System.out.println("Hexadecimal representation is: " + hexadecimal);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please provide a valid integer.");
+        }
     }
 
     public static String convertToHex(int decimal) {
-        char ch[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-        int rem;
-        int num = decimal;
-        String hexadecimal = "";
+        char[] hexChars = "0123456789ABCDEF".toCharArray();
+        StringBuilder hexadecimal = new StringBuilder();
 
-        while (num != 0) {
-            rem = num % 16;
-            hexadecimal = ch[rem] + hexadecimal;
-            num = num / 16;
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            hexadecimal.insert(0, hexChars[remainder]);
+            decimal = decimal / 16;
         }
 
-        return hexadecimal;
+        return hexadecimal.toString();
     }
 }
