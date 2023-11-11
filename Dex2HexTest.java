@@ -1,25 +1,24 @@
-public class Dex2Hex {
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-    public static int Arg1;
+public class Dex2HexTest {
 
-    public static void main(String args[]) {
-        Arg1 = Integer.parseInt(args[0]);
-        String hexadecimal = convertToHex(Arg1);
-        System.out.println("Hexadecimal representation is: " + hexadecimal);
+    @Test
+    public void testConvertToHexWithZero() {
+        assertEquals("0", Dex2Hex.convertToHex(0));
     }
 
-    public static String convertToHex(int decimal) {
-        char ch[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-        int rem;
-        int num = decimal;
-        String hexadecimal = "";
-
-        while (num != 0) {
-            rem = num % 16;
-            hexadecimal = ch[rem] + hexadecimal;
-            num = num / 16;
-        }
-
-        return hexadecimal;
+    @Test
+    public void testConvertToHexWithPositiveNumber() {
+        assertEquals("1A", Dex2Hex.convertToHex(26));
     }
+
+    @Test
+    public void testConvertToHexWithNegativeNumber() {
+        // Assuming you want to handle negative numbers by converting their absolute values
+        assertEquals("1A", Dex2Hex.convertToHex(-26));
+    }
+
+    // Add more test cases as needed for different scenarios
+
 }
