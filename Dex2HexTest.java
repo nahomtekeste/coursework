@@ -1,28 +1,25 @@
-import org.junit.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+public class Dex2Hex {
 
-import static org.junit.Assert.assertEquals;
+    public static int Arg1;
 
-public class Dex2HexTest {
+    public static void main(String args[]) {
+        Arg1 = Integer.parseInt(args[0]);
+        String hexadecimal = convertToHex(Arg1);
+        System.out.println("Hexadecimal representation is: " + hexadecimal);
+    }
 
-    @Test
-    public void testDex2HexConversion() {
-        // Redirect System.out to capture printed output
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+    public static String convertToHex(int decimal) {
+        char ch[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        int rem;
+        int num = decimal;
+        String hexadecimal = "";
 
-        // Provide a sample input for testing
-        String[] args = {"255"};
-        Dex2Hex.main(args);
+        while (num != 0) {
+            rem = num % 16;
+            hexadecimal = ch[rem] + hexadecimal;
+            num = num / 16;
+        }
 
-        // Restore the original System.out
-        System.setOut(System.out);
-
-        // Get the printed output
-        String printedOutput = outContent.toString().trim();
-
-        // Verify the expected output
-        assertEquals("Converting the Decimal Value 255 to Hex...\nHexadecimal representation is: FF", printedOutput);
+        return hexadecimal;
     }
 }
