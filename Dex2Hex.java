@@ -36,3 +36,5 @@ public class Dex2Hex {
 
 
 // this is a test of new update
+
+// this is a new java update comment just for test
